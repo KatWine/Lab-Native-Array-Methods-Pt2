@@ -13,7 +13,11 @@ const exampleSongData = require("./data/songs");
  * @param {Object[]} songs - An array of songs.
  * @returns {string[]} Sorted song titles.
  */
-function getSortedTitles(songs) {}
+function getSortedTitles(songs) {
+  songs.sort((a,b) => songs.a - songs.b)
+  console.log(songs)
+}
+getSortedTitles(exampleSongData)
 
 // #2
 /**
