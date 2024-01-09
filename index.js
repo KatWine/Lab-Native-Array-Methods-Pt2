@@ -3,6 +3,7 @@ Native Array Methods pt.2 continues with the same dataset: songs. All required f
 */
 
 
+const { run } = require("node:test");
 const exampleSongData = require("./data/songs");
 // Do not change the line above.
 
@@ -29,7 +30,7 @@ function getSongsFromAlbum(songs, albumName) {
   let newArr = songs.filter((x) => x.album === albumName);
   let songTitles = newArr.map(song => song.title)
   return songTitles
-  
+
 }
 
 
@@ -40,7 +41,29 @@ function getSongsFromAlbum(songs, albumName) {
  * @param {Object[]} songs - An array of songs.
  * @returns {Object} An object with counts of short, medium, and long songs.
  */
-function categorizeSongsByRuntime(songs) {}
+function categorizeSongsByRuntime(songs) {
+  const runTimeCat = {
+   "longSongs":NaN,
+   "mediumSongs": NaN,
+   "shortSongs": NaN
+  }
+  let count = [0,0,0];
+    for(const key of songs){
+  if(key.runtimeInSeconds < 180){
+      count[0]++;
+  }else if (key.runtimeInSeconds >= 180 && key.runtimeInSeconds <= 300){
+      count[1]++;
+  }else if(key.runtimeInSeconds > 300){
+      count[2]++;
+      }
+    }
+  runTimeCat['mediumSongs'] =  count[1]
+  runTimeCat['shortSongs'] = count[0]
+  runTimeCat['longSongs'] = count[2]
+  console.log(runTimeCat)
+  return runTimeCat
+} 
+  categorizeSongsByRuntime(exampleSongData)
 
 // #4
 /**
