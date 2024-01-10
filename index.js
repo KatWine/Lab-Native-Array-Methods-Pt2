@@ -73,11 +73,12 @@ function categorizeSongsByRuntime(songs) {
  */
 function findAlbumWithMostSongs(songs) {
  let count = {}
+ let str1 = ''
   let albumList = songs.map((x)=> x.album)
   console.log(albumList)
    albumList.forEach((element) => count[element] = (count[element] || 0)  + 1)
    console.log(count)
-  console.log( Object.keys(count).reduce((a, b) => count[a] > count[b] ? a : b))
+   return Object.keys(count).reduce((a, b) => count[a] > count[b] ? a: b)
 
 }
 
