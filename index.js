@@ -17,7 +17,7 @@ const exampleSongData = require("./data/songs");
 function getSortedTitles(songs) {
 return songs.map(x => x.title).sort()
 }
-console.log(getSortedTitles(exampleSongData))
+getSortedTitles(exampleSongData)
 
 // #2
 /**
@@ -60,7 +60,6 @@ function categorizeSongsByRuntime(songs) {
   runTimeCat['mediumSongs'] =  count[1]
   runTimeCat['shortSongs'] = count[0]
   runTimeCat['longSongs'] = count[2]
-  console.log(runTimeCat)
   return runTimeCat
 } 
   categorizeSongsByRuntime(exampleSongData)
@@ -75,9 +74,7 @@ function findAlbumWithMostSongs(songs) {
  let count = {}
  let str1 = ''
   let albumList = songs.map((x)=> x.album)
-  console.log(albumList)
    albumList.forEach((element) => count[element] = (count[element] || 0)  + 1)
-   console.log(count)
    return Object.keys(count).reduce((a, b) => count[a] > count[b] ? a: b)
 
 }
@@ -94,7 +91,10 @@ findAlbumWithMostSongs(exampleSongData)
  * @param {string} albumName - Name of the album.
  * @returns {Object|null} First song object in the album or null.
  */
-function getFirstSongInAlbum(songs, albumName) {}
+function getFirstSongInAlbum(songs, albumName) {
+ return songs.find((x) => x.album === albumName)|| null
+}
+
 
 
 // #6
